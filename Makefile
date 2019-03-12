@@ -13,8 +13,11 @@ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 CPPFLAGS ?= $(INC_FLAGS) -MMD -MP
 
-$(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
-	$(CC) $(OBJS) -o $@ $(LDFLAGS)
+
+#$(BUILD_DIR)/$(TARGET_EXEC): $(OBJS)
+#	$(CC) $(OBJS) -o $@ $(LDFLAGS)
+all: $(OBJS)
+	chmod -R 777 $(BUILD_DIR)/*
 
 
 $(BUILD_DIR)/%.s.o: %.s
@@ -29,7 +32,7 @@ $(BUILD_DIR)/%.c.o: %.c
 
 $(BUILD_DIR)/%.cpp.o: %.cpp
 	$(MKDIR_P) $(dir $@)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< -o $@ $(LDFLAGS)
 .PHONY: clean
 
 clean:

@@ -1,0 +1,64 @@
+//g++  5.4.0
+
+#include <iostream>
+using namespace std;
+
+struct TreeNode
+{
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int x)
+    {
+        val=x;
+        left=NULL;
+        right=NULL;
+    }
+    
+};
+int maximum(int a,int b)
+{
+    if(a>b)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+}
+int maxdepth(TreeNode* p)
+{
+    if(p==NULL)
+        return 0;
+    else
+    {
+        return maximum(maxdepth(p->left),maxdepth(p->right)) + 1;
+    }
+}
+int main()
+{
+     TreeNode* a=new TreeNode(10);
+    //printNode(newn);
+    a->left=new TreeNode(15);
+    a->left->left=new TreeNode(3);
+    a->left->left->left=new TreeNode(5);
+    a->left->right=new TreeNode(6);
+    a->right=new TreeNode(30);
+    a->right->right=new TreeNode(2);
+    a->right->right->left=new TreeNode(9);
+    a->right->right->right=new TreeNode(8);
+    
+    
+    
+//                               <- 10 -> 
+//                     <- 15 ->             30 ->
+//                 <- 3        6                  <- 2 ->
+//                5                              9       8
+           
+    
+    int treedepth=maxdepth(a);
+    cout<<"\n isSameTree = "<<treedepth;
+    return 0;
+    //std::cout << "Hello, world!\n";
+}

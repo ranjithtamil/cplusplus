@@ -23,6 +23,8 @@ int main()
         a=y;
     }
     */
+    a=x;
+    b=y;
     while(b!=0)
     {
         r=a%b;

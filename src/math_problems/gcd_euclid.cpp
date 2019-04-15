@@ -11,7 +11,7 @@ int main()
     int a;
     int b;
     int r;
-    
+    /*
     if(x>y)
     {
         a=x;
@@ -22,7 +22,7 @@ int main()
         b=x;
         a=y;
     }
-    
+    */
     while(b!=0)
     {
         r=a%b;

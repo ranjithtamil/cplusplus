@@ -1,3 +1,5 @@
+//g++  5.4.0
+
 #include <iostream>
 using namespace std;
 
@@ -11,9 +13,14 @@ template <typename T>
 int main()
 {
     int val1=5,val2=15;
-    cout<<sum(val1,val2)<<endl;
+    
+    //either way is fine
+    //cout<<sum(val1,val2)<<endl;
+    cout<<sum<int>(val1,val2)<<endl;
+    
     
     float value1=15.5,value2=10.1;
-    cout<<sum(value1,value2)<<endl;
+    //cout<<sum(value1,value2)<<endl;
+    cout<<sum<float>(value1,value2)<<endl;
 }
 

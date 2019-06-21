@@ -1,0 +1,16 @@
+For these problems , find HCF of both amounts - the HCF is the minimum amount transferrable. Then, from there on, all multiples of HCF are transferrable.
+
+Example:- Imagine A has all 25 dollar notes and 10 dollar notes. B too has all 25 dollar notes and 10 dollar notes. Can A transfer 65 dollars to B and how?
+
+
+Find HCF(25,10) = 5. 65 is a multiple of 5, so yes 65 is transferrable. How??
+
+
+
+Bump 25 dollars(higher number out of 25 and 10)          to an amount just greater than 65. i.e., 75. 
+So 25 x "3" = 75. Keep this number 3 safe.
+
+Now,  subtract 10 from 75(and store a counter for number of 10s used..., so that counter is "1"), Now.. we get 65. Once we arrive
+at the desired amount, look at the 2 coefficients of 25 dollar notes (i.e.,3) , and 10 dollar notes (i.e., 1) used...
+Hence answer = 3 twenty five dollar notes and 1 ten dollar note.
+

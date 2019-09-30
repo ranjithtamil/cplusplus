@@ -6,6 +6,14 @@
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
+
+/*
+int isPowerOfFour(int n) 
+{ 
+    return n !=0 && ((n&(n-1)) == 0) && !(n & 0xAAAAAAAA); 
+}  
+
+*/
 int check_power_of_four(int n) {
   int ct=0;
     if(n<=0) {

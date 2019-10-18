@@ -1,3 +1,79 @@
+/*Given a string, find the length of the longest substring without repeating characters.
+
+Example 1:
+
+Input: "abcabcbb"
+Output: 3 
+Explanation: The answer is "abc", with the length of 3. 
+Example 2:
+
+Input: "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+Example 3:
+
+Input: "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3. 
+            Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+            
+Extra edge case Input: "abba"
+Output: 2
+*/
+
+/* SLIDING WINDOW OPTIMIZED (MAP) */
+#include<bits/stdc++.h>
+class Solution {
+public:
+    
+    int lengthOfLongestSubstring(string s) {
+        map<char,int> mymap;
+        
+        int i=0,j=0,maxlen=0,n=s.size();
+        for(;j<n;j++) {
+            if( mymap.find(s.at(j))!= mymap.end() ) {
+                
+                i = max(i,mymap[s[j]]); //abba edge case...  when you hit the last 'a', you want i=3.... you dont want i=0 i.e. i = max(3,0).. 
+            }
+            maxlen = max(maxlen, j-i +1);
+            mymap[s[j]]=j+1;
+        }
+        return maxlen;
+    }
+};
+
+
+
+/* SUBOPTIMAL TWO PASS SLIDING WINDOW (SET) */
+/*
+class Solution {
+public:
+    
+    int lengthOfLongestSubstring(string s) {
+        set<char> myset;
+        unsigned int n = s.size();
+       
+        unsigned int i = 0;
+        unsigned int j = 0;
+        unsigned int maxlen=0;
+        while( i<n && j<n) {
+            if( myset.find(s[j]) == myset.end() ) {
+                 //both i and j are 0 initially. j++ to next substring element
+                myset.insert(s[j]); //insert s[j] 0th element
+                j++;
+                maxlen = max(j-i, maxlen); //(1-0, 0)
+            }
+            else {
+                myset.erase(s[i]);
+                i++;
+            }
+        }
+        return maxlen;
+    }
+};
+*/
+
+
 /* BRUTE FORCE SOLUTION 
 
 class Solution {

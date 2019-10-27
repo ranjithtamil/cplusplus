@@ -52,8 +52,30 @@ public:
 };
 
 
-/*
+/* Iterative 
 
+class Solution {
+public:
+    vector<int> num_ways;
+   
+    int climbStairs(int n) {
+        
+        vector<int> num_ways;
+        num_ways.push_back(1);
+        num_ways.push_back(1);
+        
+        for(int i=2;i<=n;i++) {
+            int temp=num_ways[i-1]+num_ways[i-2];
+            num_ways.push_back(temp);
+        }
+        return(num_ways[n]);
+    }
+};
+
+*/
+
+/*
+Recursion with memoization MAPS
 class Solution {
 public:
     map<int,int> num_ways;
@@ -78,6 +100,9 @@ public:
 
 
 /*
+
+RECURSION
+
 class Solution {
 public:
     int climb_stairs(int n) {

@@ -14,6 +14,7 @@ Input: "cbbd"
 Output: "bb"
 */
 
+/*Brute Force */
 class Solution {
 public:
     int isPalindrome(string str) {

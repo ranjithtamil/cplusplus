@@ -1,7 +1,7 @@
 /* 
 22. Generate Parentheses
 Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
-
+(  https://www.youtube.com/watch?v=AdZIC_ygBnI  )
 For example, given n = 3, a solution set is:
 
 [

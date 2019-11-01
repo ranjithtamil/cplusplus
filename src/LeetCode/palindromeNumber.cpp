@@ -19,6 +19,41 @@ Output: false
 Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 */
 
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        if(x<0) {
+            return false;
+        }
+        else if(x==0) { 
+            return true;
+        }
+        else if((x%10==0) && x!=0) {
+            return false; //for input 10, e.g. last digit=0 => first digit has to be zero. 
+            //without this condition, rev/10==x (==0),so handle here
+            //only if x==0 and x%10==0, it should return true. else return false here. Special Case!
+        }
+        int reversed_number=0;
+        
+        while(x>reversed_number) { //To only check until midway of integer. Sufficient to check for halfway through to avoid overflow
+            int digit=x%10;
+            x=x/10;
+            reversed_number=(reversed_number*10) + digit;
+        }
+        
+        if(reversed_number==x || (reversed_number/10)==x) {
+                return true;
+            // 1st condition(rev==x)if x has even digits. 2nd condition(rev/10==x)if x odd digits
+        }
+        else {
+            return false;
+        }
+    }
+};
+
+
+
+
 /*
 class Solution {
 public:

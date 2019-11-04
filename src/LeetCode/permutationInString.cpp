@@ -93,3 +93,81 @@ public:
     }
 };
 */
+
+/* Array Implementation with Substr Function 
+//g++  5.4.0
+
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+
+    bool checkInclusion(string s1, string s2) {
+        //int n1=s1.size(); //stupid leetcode counts "ab" as size 3 (includes " char as well)
+        //int n2=s2.size();
+        int n1=0;
+        for(int i=0;i<s1.size();i++) {
+            if(s1[i] >=97 && s1[i]<=122) {
+                n1++;
+            }
+        }
+        
+        int n2=0;
+        for(int i=0;i<s2.size();i++) {
+            if(s2[i] >=97 && s2[i]<=122) {
+                n2++;
+            }
+        }
+        
+        
+        if( n1 > n2 ) {
+            return false;
+        }
+        bool flag=true;
+        int map1[26]={0};
+        
+        
+        //Calculate histogram of characters for both string s1 and string s2
+        for(int i=0; i<n1; i++) {
+            if( s1.at(i) >= 97 && s1.at(i) <=122) {
+                int val=int(s1.at(i)) - int('a');
+                map1[val]=map1[val]+1;
+                
+            }
+        }
+        
+        
+        
+        for(int i=0; i<= (n2 - n1); i++) {
+                flag=true; //last iteration couldve set to false. toggle it to true again
+                int j=(i+n1-1);
+                string sub = s2.substr(i,j-i+1);
+                int map2[26]={0};
+                //Calculate histogram of all possible substrings of length n1=s1.size() in string s2 
+                for(int k=0; k<n1; k++) {
+                    if( sub.at(k) >=97 && sub.at(k) <= 122) {
+                        int val=int(sub.at(k)) - int('a');
+                         map2[val]=map2[val]+1;
+                    }
+                }
+            
+                //compare both the histograms of s1 and (substring of s2)
+                for(int l=0; l<26; l++) {
+                    if(map1[l]!=map2[l]) {
+                        flag=false;
+                    }
+                }
+                if(flag==true) {
+                    return true;
+                }
+            
+               
+        }
+        
+        return flag;
+    }
+};
+
+
+*/

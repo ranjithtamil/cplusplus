@@ -94,7 +94,98 @@ public:
 };
 */
 
-/* Array Implementation with Substr Function 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Array implementation Accepted Runtime : 200 ms , Memory 9MB (without substr function)*/
+
+/*
+
+//g++  5.4.0
+
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+
+    bool checkInclusion(string s1, string s2) {
+        //int n1=s1.size(); //stupid leetcode counts "ab" as size 3 (includes " char as well)
+        //int n2=s2.size();
+        int n1=0;
+        for(int i=0;i<s1.size();i++) {
+            if(s1[i] >=97 && s1[i]<=122) {
+                n1++;
+            }
+        }
+        
+        int n2=0;
+        for(int i=0;i<s2.size();i++) {
+            if(s2[i] >=97 && s2[i]<=122) {
+                n2++;
+            }
+        }
+        
+        
+        if( n1 > n2 ) {
+            return false;
+        }
+        bool flag=true;
+        int map1[26]={0};
+        
+        
+        //Calculate histogram of characters for both string s1 and string s2
+        for(int i=0; i<n1; i++) {
+            if( s1.at(i) >= 97 && s1.at(i) <=122) {
+                int val=s1.at(i) - 'a';                
+                //cout<<"\n Updating map1["<<val<<"] from "<<map1[val] <<" to "<<map1[val]+1;
+                map1[val]=map1[val]+1;
+                
+            }
+        }
+        
+        for(int i=0; i<= n2 - n1; i++) {
+            flag=true;
+            int map2[26]={0};
+            for(int j=0; j<n1; j++) {
+                int val=s2.at(i+j)  - 'a';
+                //cout<<"\n Updating map2["<<val<<"] from "<<map2[val] <<" to "<<map2[val]+1;
+                map2[val]=map2[val]+1;
+            }
+            for(int l=0; l<26; l++) {
+                if(map1[l]!=map2[l]) {                    
+                    flag=false;
+                }
+            }
+            if( flag == true ) {
+                return flag;
+            }
+        }
+        
+        return flag;
+    }
+};
+*/
+
+
+
+
+
+
+
+
+
+/* Array Implementation with Substr Function (Runtime : 225ms, Memory: 60 MB)
 //g++  5.4.0
 
 #include <iostream>

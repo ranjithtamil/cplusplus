@@ -56,7 +56,7 @@ public:
         int maxarea=0;
         for(int i=0,j=n-1;i<j;) {
             int area = (j-i) * minimum(height[i],height[j]);
-            if(height[i]<height[j]) {   //move pointer of shorter line. if ith line is shorter than jth line, move i to right. if instead longer line was moved, then area would definitely decrease.
+            if(height[i]<height[j]) {   //move pointer of shorter line. if ith line is shorter than jth line, move i to right. if instead longer line was moved, then area would definitely decrease. we are trying to increase the minimum of the 2 lines.
                 i++;
             }
             else {  // if jth line is shorter than ith line, move j to left

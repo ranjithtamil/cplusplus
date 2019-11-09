@@ -5,6 +5,7 @@ Note: You may not slant the container and n is at least 2.
 */
 
 //BRUTE FORCE METHOD
+/*
 class Solution {
 public:
     int minimum(int a,int b) {
@@ -31,6 +32,42 @@ public:
                 }
             }
         }
+        return maxarea;
+    }
+};
+*/
+
+//Two Pointer approach
+class Solution {
+public:
+    int minimum(int a,int b) {
+        if(a<=b) {
+            return a;
+        }
+        else {
+            return b;
+        }
+    }
+    int maxArea(vector<int>& height) {
+        int n=height.size();
+        if( n<=1 ) {
+            return 0;
+        }
+        int maxarea=0;
+        for(int i=0,j=n-1;i<j;) {
+            int area = (j-i) * minimum(height[i],height[j]);
+            if(height[i]<height[j]) {   //move pointer of shorter line. if ith line is shorter than jth line, move i to right. if instead longer line was moved, then area would definitely decrease.
+                i++;
+            }
+            else {  // if jth line is shorter than ith line, move j to left
+                j--;
+            }
+            
+            if(area > maxarea) {
+                maxarea=area;
+            }
+        }
+        
         return maxarea;
     }
 };

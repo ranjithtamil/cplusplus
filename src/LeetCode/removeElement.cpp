@@ -46,7 +46,23 @@ public:
     } 
 };
 
-
+// suboptimal solution
+/*
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int i=0;
+        int n=nums.size();
+        for(int j=0;j<n;j++) {
+            if(nums[j]!=val) {
+                nums[i]=nums[j];
+                i++;
+            }
+        }
+        return i; //(actually i jumps out of the array but since length is asked, it is i )
+    } 
+};    
+*/
 void trimLeftTrailingSpaces(string &input) {
     input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch) {
         return !isspace(ch);

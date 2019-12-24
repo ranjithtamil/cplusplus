@@ -1,4 +1,7 @@
 /*
+https://www.youtube.com/watch?v=ohHWQf1HDfU&vl=en
+https://www.youtube.com/watch?v=yBCzO0FpsVc
+
 53. Maximum Subarray
 Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
@@ -10,8 +13,7 @@ Explanation: [4,-1,2,1] has the largest sum = 6.
 Follow up:
 
 If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
-*/
-//#include<bits/stdc++.h>
+*///#include<bits/stdc++.h>
 class Solution {
 public:
     
@@ -21,7 +23,63 @@ public:
         }
         return b;    
     }
-    //O(n^2) approach - naive
+    //Divide and Conquer Method - O(nlogn). O(n) is better solution.
+    int maxSum(int a, int b, int c) {
+        if(a>=b && a>=c) {
+            return a;
+        }
+        if(b>=a && b>=c) {
+            return b;
+        }
+        else {
+            return c;
+        }
+    }
+    int maxCrossSum(vector<int>& nums, int low, int mid, int high) {
+        int leftSum=0;
+        int rightSum=0;
+        int maxSum=INT_MIN;
+        int sum=0;
+        for(int i=mid;i>=low;i--) {
+            sum=sum+nums[i];
+            if(sum > maxSum) {
+                maxSum=sum;
+            }
+        }
+        leftSum=maxSum;
+        sum=0,maxSum=INT_MIN;
+        for(int i=mid+1;i<=high;i++) {
+            sum=sum+nums[i];
+            if(sum > maxSum) {
+                maxSum=sum;
+            }
+        }
+        rightSum=maxSum;
+        
+        int resultCrossSum=(leftSum+rightSum);
+        return resultCrossSum;
+        
+    }
+    int maxRecurSubArray(vector<int>& nums, int low, int high) {
+        if(low==high) {
+            return nums[low];
+        }
+        int mid=(low+high)/2;
+        int leftSum=maxRecurSubArray(nums,low,mid);
+        int rightSum=maxRecurSubArray(nums,mid+1,high);
+        int crossSum=maxCrossSum(nums,low,mid,high);
+       
+        return maxSum(leftSum, rightSum, crossSum);
+    }
+    
+    int maxSubArray(vector<int>& nums) {
+        int n=nums.size();
+        int maxSum=maxRecurSubArray(nums,0,n-1);
+        return maxSum;
+    }
+    
+    /*
+    //Naive - O(n^2) approach
     int maxSubArray(vector<int>& nums) {
         int n=nums.size();
         if(n<=0) {
@@ -29,16 +87,16 @@ public:
         }
         int maxSum=nums[0];
         int sum=0;
-        int maxidx1=0;
-        int maxidx2=0;
+        //int maxidx1=0;
+        //int maxidx2=0;
         for(int i=0;i<n;i++) {
             int sum=0;
             for(int j=i;j<n;j++) {
                 sum=sum+nums[j];
                 if(sum > maxSum) {
                     maxSum=sum;
-                    maxidx1=i;
-                    maxidx2=j;
+                    //maxidx1=i;
+                    //maxidx2=j;
                     
                 }
                 
@@ -47,6 +105,7 @@ public:
         //cout<<"\nIndices = "<<maxidx1<<" "<<maxidx2;
         return maxSum;
     }
+    */
     
     /*
     O(n) solution
@@ -80,7 +139,6 @@ public:
     }
     */
 };
-
 void trimLeftTrailingSpaces(string &input) {
     input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch) {
         return !isspace(ch);

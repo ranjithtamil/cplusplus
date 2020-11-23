@@ -1,3 +1,5 @@
+//TODO: Compare whether using distance[][] as in Leetcode brute force solution
+//(OR)  using step and no distance vector (but visited vector) is better (in terms of space and time complexity).
 class Solution {
 public:
     int WALL = -1;

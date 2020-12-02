@@ -34,4 +34,34 @@ public:
         checkSum(root,sum - root->val,found);
         return found;
     }
+    
+    /*
+      //Iterative Solution using Stack
+    bool hasPathSum(TreeNode* root, int sum) {
+        if(root==NULL && sum==0) {
+            return false;
+        }
+        if(root==NULL && sum!=0) {
+            return false;
+        }
+        stack<pair<TreeNode*,int>> myStack;   //current element, remaining sum
+        myStack.push(make_pair(root, sum-(root->val)));
+        while(!myStack.empty()) {
+            pair<TreeNode*,int> cur = myStack.top();
+            myStack.pop();
+            TreeNode* curNode = cur.first;
+            int remValue = cur.second;
+            if(curNode->left==NULL && curNode->right==NULL && remValue==0) {
+                return true;
+            }
+            if(curNode->left) {
+                myStack.push(make_pair(curNode->left,remValue-(curNode->left->val)));
+            }
+            if(curNode->right) {
+                myStack.push(make_pair(curNode->right,remValue-(curNode->right->val)));
+            }
+        }
+        return false;
+    }
+    */
 };

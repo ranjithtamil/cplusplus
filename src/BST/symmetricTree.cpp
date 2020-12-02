@@ -11,6 +11,41 @@
  */
 class Solution {
 public:
+    /*
+    //Iterative
+    bool isSymmetric(TreeNode* root) {
+        if(root==NULL) {                                                                          //  1. if root is NULL, return true;
+            return true;
+        }
+        if((root->left==NULL && root->right!=NULL) || (root->left!=NULL && root->right==NULL)) {//2. if either(root->l=NULL, root->r!=NULL) OR (root->r=NULL, root->l!=NULL) 
+            return false;
+        }
+        queue<TreeNode*> Q;
+        Q.push(root->left);
+        Q.push(root->right);
+        
+        while(!Q.empty()) {
+            TreeNode* X=Q.front();
+            Q.pop();
+            TreeNode* Y=Q.front();
+            Q.pop();
+            if(X==NULL && Y==NULL) {                                                            //3. IMPORTANT: Continue.... because it can be true
+                continue;
+            }
+            if((X==NULL && Y!=NULL)||(X!=NULL && Y==NULL)) {                                    //4. return false if either one is NULL/Non-NULL combo
+                return false;
+            }
+            if(X->val != Y->val) {                                                              //5. Values need to be same
+                return false;
+            }
+            Q.push(X->left);                                                                    //6. IMPORTANT: Construct Q to push x->l, y->r, x->r, y->l in this ORDER
+            Q.push(Y->right);
+            Q.push(X->right);
+            Q.push(Y->left);
+        }
+        return true;                                                                            //7. If all conditions went through it is a symmetric tree
+    }
+    */
     bool findSymmetry(TreeNode* x, TreeNode* y) {
         if((x==NULL && y!=NULL) || (x!=NULL && y==NULL)) {
             return false;
@@ -45,7 +80,7 @@ public:
 };
 
 
-//Study all edge cases.
+//Study all edge cases for recursive.
 /*
 // isSymmetric function
 1. if root is NULL, return true

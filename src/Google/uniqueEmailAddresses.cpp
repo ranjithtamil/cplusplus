@@ -55,10 +55,6 @@ public:
         unordered_set<string>seen;
         for(int i=0;i<emails.size();i++) {
             string curr=emails[i];
-            //
-            //cout<<"\ncurr="<<curr;
-            //
-            //int p=0;
             int q=0;
             string local="";
             string rest="";
@@ -73,8 +69,6 @@ public:
                     q++;
                 }
                 else {
-                    //local[p]=curr[q];
-                    //p++;
                     local=local+curr[q];
                     q++;
                 }
@@ -91,9 +85,6 @@ public:
                     q++;
                 } 
             }
-            //
-            //cout<<"\nlocal = "<<local<<"rest="<<rest;
-            //
             seen.insert(local+"@"+rest);
         }
         return seen.size();

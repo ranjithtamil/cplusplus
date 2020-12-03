@@ -1,4 +1,4 @@
-#if 0
+/*
 929. Unique Email Addresses
 Every email consists of a local name and a domain name, separated by the @ sign.
 
@@ -26,7 +26,7 @@ Note:
 Each emails[i] contains exactly one '@' character.
 All local and domain names are non-empty.
 Local names do not start with a '+' character.
-#endif
+*/
 
 class Solution {
 public:

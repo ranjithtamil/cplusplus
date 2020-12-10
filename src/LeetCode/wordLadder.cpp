@@ -1,4 +1,8 @@
 class Solution {
+    /*
+    C++ O(N * M) time and O(N * M) space complexity solution. The time complexity is O(N * M) because each element will be seen at most twice. It is seen first time when it is pushed into the queue and the second time when it is popped. The factor of M comes in time complexity based on the fact that we are traversing every character of string.
+The space complexity is O(N * M) because each element will be stored in the queue at most once. We remove it from the set of words list therefore it cannot be added again in the queue.
+    */
 public:
     bool isDifferenceOne(string str1, string str2) {
         if(str1.size()!=str2.size()) {

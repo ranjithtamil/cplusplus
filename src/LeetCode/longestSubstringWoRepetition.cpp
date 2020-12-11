@@ -20,7 +20,57 @@ Explanation: The answer is "wke", with the length of 3.
 Extra edge case Input: "abba"
 Output: 2
 */
-
+class Solution {
+public:
+    /*
+    int lengthOfLongestSubstring(string s) {
+        unordered_set<char> seen;
+        int maxLen=0;
+        int n=s.size();
+        for(int j=0,i=0;j<n;) {
+            if(seen.find(s[j])==seen.end()) {
+               seen.insert(s[j]);
+               maxLen=max(maxLen,j-i+1);
+                j++;
+            }
+            else {
+                seen.erase(s[i]);
+                i++;
+            }
+        }
+        return maxLen;
+    }*/
+  /*SLIDING WINDOW MOST OPTIMIZED MAP SOLUTION
+            int lengthOfLongestSubstring(string s) {
+        unordered_map<char,int> posMap;
+        int maxLen=0;
+        int n=s.size();
+        for(int j=0,i=0;j<n;j++) {
+            if(posMap.find(s[j])!=posMap.end()) {
+                
+                i=max(i,posMap[s[j]]+1);
+                posMap[s[j]]=j;  
+                maxLen=max(maxLen,j-i+1);
+            }
+            else {
+                posMap[s[j]]=j;
+                maxLen=max(maxLen,j-i+1);
+            }
+        }
+        return maxLen;
+    }
+    
+    // If maxLen is not recorded in both if and else conditions - say it was only recorded in case of the else condition, then this test case will fail!!! Because when you hit the second t,its already present in map. If maxLen recording not done in the if case, then maxLen will not have the last 't' char, and j++ will exit out of loop. So you will record maxLen as 4.
+    
+    //So, if the maxlen condition was there in the else case also, then maxLen will be recorded after updating posMap[s[j]] and i. So you will record maxLen as 5.
+/*Input:
+"tmmzuxt"
+Output:
+4
+Expected:
+5*/ 
+};
+*/
 /* SLIDING WINDOW OPTIMIZED (MAP) */
 #include<bits/stdc++.h>
 class Solution {

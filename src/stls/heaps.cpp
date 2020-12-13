@@ -42,7 +42,16 @@ int main()
     printVector(v1);
     
     //to check if the container satisfies Heap
-    cout<<"\n Is this heap = "<<is_heap(v1.begin(),v1.end());
+    cout<<"\n Is this heap = "<<is_heap(v1.begin(),v1.end())<<"\n";
+    
+    // using is_heap_until() to check position  
+    // till which container is heap 
+    auto it = is_heap_until(v1.begin(), v1.end()); 
+    
+    // Displaying heap range elements 
+    cout << "The heap elements in container are : "; 
+    for (vector<int>::iterator it1=v1.begin(); it1!=it; it1++) 
+       cout << *it1 << " "; 
     
     return 0;
     

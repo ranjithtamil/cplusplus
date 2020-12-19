@@ -1,6 +1,59 @@
 //https://leetcode.com/problems/kth-largest-element-in-an-array/discuss/60309/C%2B%2B-STL-partition-and-heapsort
+
+
 class Solution {
 public:
+    //Choosing random pivot- optimised best solution
+    
+    void swaps(int &x, int &y) {
+        int temp=x;
+        x=y;
+        y=temp;
+    }
+    int partition(int low, int high, vector<int>& nums) {
+        int pivot=nums[high];
+        int i=low-1;
+        for(int j=low;j<=high-1;j++) {
+            if(nums[j]<pivot) {
+                i++;
+                swaps(nums[i],nums[j]);
+            }
+        }
+        swaps(nums[i+1],nums[high]);
+        return (i+1);
+    }
+    int partition_rand(int low, int high, vector<int> &nums) {
+        srand(time(NULL));
+        int randomPivot = low + rand() %(high-low);
+        swap(nums[randomPivot],nums[high]);
+        return partition(low,high,nums);
+    }
+    int quickSelect(int low,int high,vector<int>& nums,int k) {
+        if(low==high) {
+            return nums[low];
+        }
+        int pivot=partition_rand(low,high,nums);
+        int n=nums.size();
+        if(pivot==n-k) {
+            return nums[pivot];
+        }
+        if(pivot>(n-k)) {
+            return quickSelect(low, pivot-1, nums, k);
+        }
+        if(pivot<(n-k)) {
+            return quickSelect(pivot+1, high, nums, k);
+        }
+        return INT_MAX;
+    }
+    int findKthLargest(vector<int>& nums, int k) {
+        
+        int low=0;
+        int high=nums.size()-1;
+        return quickSelect(low,high,nums,k);
+    }
+    
+    //Choosing Pivot as highest element
+    /*
     void swaps(int &x, int &y) {
         int temp=x;
         x=y;
@@ -41,6 +94,7 @@ public:
         int high=nums.size()-1;
         return quickSelect(low,high,nums,k);
     }
+    */
     //Heap optimized-while adding elements to heap(MINHEAP), keep popping off of heap to keep only k elements in heap. last element in heap will be MAX.
     /*
       int findKthLargest(vector<int>& nums, int k) {

@@ -1,5 +1,6 @@
 //https://leetcode.com/problems/shortest-way-to-form-string/discuss/330938/Accept-is-not-enough-to-get-a-hire.-Interviewee-4-follow-up
 //https://medium.com/swlh/google-interview-question-leetcode-1055-7670fbaf5bd3
+//https://medium.com/swlh/google-interview-question-leetcode-1055-7670fbaf5bd3 - TODO: READ O(n) solution
 class Solution {
 public:
     //O(mlogn) solution -O(m) for target array traversal, O(logn) for source traversal by Binary search. O(26) for character map

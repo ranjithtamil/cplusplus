@@ -1,3 +1,4 @@
+//https://leetcode.com/problems/k-closest-points-to-origin/discuss/217966/C%2B%2B-3-lines-nth_element-O(n)
 /* based on sorting. but better solution better than 90% and 72% time and space respectively
     vector<vector<int>> kClosest(vector<vector<int>>& points, int K) {
         int n = points.size();

@@ -31,6 +31,11 @@ public:
     int quickSelect(int low,int high,vector<int>& nums,int k) {
         if(low==high) {
             return nums[low];
+            //
+             //This condition is only for the random partition. Becuase there is a rand%(high-low)...
+                                      //If low--high, then, rand%0 will lead to division by zero error.
+        
+            
         }
         int pivot=partition_rand(low,high,nums);
         int n=nums.size();

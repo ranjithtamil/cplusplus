@@ -44,15 +44,16 @@ public:
         
         
         int second=nums[0];
-        int first=nums[1];
+        int first = max(nums[0],nums[1]);   //int first=nums[1]; 
         int current=nums[2];
         for(int i=2;i<n;i++) {
-            current = maxmum(nums[i],nums[i]+second,first,second);
-            second = max(first,second);
+            current = maxmum(nums[i],nums[i]+second,first);
+            second = first; //second = max(first,second);
             first = current;
         }
         return current;
     }
+    /*
     int maxmum(int a,int b, int c,int d) {
         if(a>=b && a>=c && a>=d) {
             return a;
@@ -64,5 +65,15 @@ public:
             return c;
         }
         return d;
+    }*/
+    
+    int maxmum(int a,int b, int c) {
+        if(a>=b && a>=c) {
+            return a;
+        }
+        if(b>=c && b>=a) {
+            return b;
+        }
+            return c;
     }
 };

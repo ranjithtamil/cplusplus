@@ -4,6 +4,7 @@ public:
         bool operator()(pair<int,char> const& p1, pair<int,char> const& p2) {
             // return "true" if "p1" is greater than "p2" 
             return p1.first < p2.first;       //But This will make Max Heap. NOTE VERY IMPORTANT that it has to be ascending here but heap will be maxheap  
+                                            // for minHeap, condition will be p1.first > p2.first
         }
     };
     string reorganizeString(string S) {

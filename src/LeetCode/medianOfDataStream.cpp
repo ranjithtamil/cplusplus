@@ -146,3 +146,29 @@ public:
  * obj->addNum(num);
  * double param_2 = obj->findMedian();
  */
+
+
+/*
+Single Element case
+1.	If both heap sizes are 0, return Median = Input Element. Add Element to Max-Heap.
+
+Two Element case
+1.	If MinHeap size == 0 , MaxHeap size == 1,
+a.	Return Median = (Input Element + MaxHeap.top())/2.
+i.	If Input Element >= MaxHeap.top(), add Input Element to MinHeap
+ii.	Else, Move MaxHeap.top() to MinHeap. Move Input Element to MaxHeap.
+
+More than 2 Element case
+1.	If maxheap.size() == minheap.size(),
+a.	If element >= minheap.top(),
+i.	Return Minheap.top()= Median. Move minheap.top() to maxheap. Add Element to minheap.
+b.	If element < minheap.top(), 
+i.	Return max(element,maxheap.top()) = median. Add Element to maxheap.
+2.	If maxheap.size() > minheap.size()
+a.	If Element < Maxheap.top(), move maxheap.top() to minheap, move element to maxheap. Median = (Maxheap.top() + Minheap.top()) /2
+b.	Else If Element > Maxheap.top(), move element to minheap, Median = (Maxheap.top() + miheap.top())/2
+c.	Else (i.e., element == maxheap.top()), move element to minheap. Median = (Maxheap.top() + Minheap.top())/2
+
+
+
+*/

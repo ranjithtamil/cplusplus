@@ -25,14 +25,16 @@ public:
     //index>=0
     int get(int index) {
         if(index>=siz) {
+            //return invalid, if index >= size of linkedList
             return -1;
         }
         if(index<0) {
+            //return invalid, if index < 0
             return -1;
         }
         
         if(siz-index<=(index/2)) {
-            //start from tail
+            //start from tail, since index is closer to tail
             SingleLinkedList* curr=tail;
             int i=0;
             while(i<siz-1-index) {
@@ -42,6 +44,7 @@ public:
             return curr->val;
         }
         else {
+            //start from head, since index is closer to head
             SingleLinkedList* curr=head;
             int i=0;
             while(i<index) {
@@ -56,52 +59,39 @@ public:
     /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
     void addAtHead(int val) {
         if(head==NULL) {
+            //There will be only one element in linkedList. Update head and tail to single element and return
             SingleLinkedList* ele = new SingleLinkedList(val);
             head=ele;
             tail=ele;
             siz++;
             return;
         }
-        if(head==tail) {
+            //Update next pointer of new element to point to old List's head. Update prev pointer of old List's head to new element. Update new head and return
             SingleLinkedList* ele = new SingleLinkedList(val);
             ele->next=head;
             head->prev=ele;
-            tail->prev=ele;     //may not be required
             head=ele;
             siz++;
             return;
-        }
-        SingleLinkedList* ele = new SingleLinkedList(val);
-        ele->next=head;
-        head->prev=ele;
-        head=ele;
-        siz++;
     }
     
     /** Append a node of value val to the last element of the linked list. */
     void addAtTail(int val) {
         if(tail==NULL) {
+            //There will be only one element in linkedList. Update head and tail to single element and return
             SingleLinkedList* ele = new SingleLinkedList(val);
             head=ele;
             tail=ele;
             siz++;
             return;
         }
-        if(head==tail) {
-            SingleLinkedList* ele = new SingleLinkedList(val);
-            ele->next=tail->next;   //may not be required
-            ele->prev=tail;
-            tail->next=ele;
-            tail=ele;
-            siz++;
-            return;
-        }
+        //Update prev pointer of new element to point to old List's tail. Update next pointer of old List's tail to new element. Update new tail and return
         SingleLinkedList* ele = new SingleLinkedList(val);
-        ele->next=tail->next;   //may not be required
         ele->prev=tail;
         tail->next=ele;
         tail=ele;
         siz++;
+        return;
     }
     
     /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */

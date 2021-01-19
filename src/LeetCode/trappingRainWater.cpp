@@ -73,7 +73,7 @@ public:
         
         
         //https://www.youtube.com/watch?v=XqTBrQYYUcc
-        //Finding Minimum Envelope
+        //Finding lower Envelope of 2 monotonic functions
         int n = height.size();
         if( n==0 ) {
             return 0;

@@ -1,10 +1,10 @@
 /*
 https://www.youtube.com/watch?v=HmBbcDiJapY
 */
-
 class Solution {
 public:
     int trap(vector<int>& height) {
+        //https://www.youtube.com/watch?v=HmBbcDiJapY
         /*
         int n = height.size();
         if( n==0 ) {
@@ -32,7 +32,7 @@ public:
         return result;
         */
         
-        
+        /*
         int n = height.size();
         if( n==0 ) {
             return 0;
@@ -66,6 +66,45 @@ public:
             int rmax=rmaxArr[j];
             
            result = result + (min(lmax,rmax)  - height[j]);
+        }
+        return result;
+        */
+        
+        
+        
+        //https://www.youtube.com/watch?v=XqTBrQYYUcc
+        //Finding Minimum Envelope
+        int n = height.size();
+        if( n==0 ) {
+            return 0;
+        }
+        if( n==1 ) {
+            return 0;
+        }
+        
+        int result=0;
+        
+        int i=0;
+        int j=n-1;
+        int lmax=height[0];
+        int rmax=height[n-1];
+        while(i<j) {
+            
+            if(i>0) {
+                lmax=max(lmax,height[i]);
+            }
+            if(j<n-1) {
+                rmax=max(rmax,height[j]);
+            }
+            
+            if(lmax > rmax) {
+                result=result+(rmax-height[j]);
+                j--;
+            }
+            else {
+                result=result+(lmax-height[i]);
+                i++;
+            }
         }
         return result;
     }
